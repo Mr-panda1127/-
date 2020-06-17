@@ -5,11 +5,10 @@ import java.util.Properties
 import com.typesafe.config.ConfigFactory
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
-
 object EquipmentRpt {
   def main(args: Array[String]): Unit = {
 
-    // 创建执行入口
+     //创建执行入口
     val conf = new SparkConf()
       .set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
     val spark = SparkSession.builder()
@@ -48,11 +47,12 @@ object EquipmentRpt {
     prop.setProperty("password",load.getString("jdbc.password"))
     df3.coalesce(1).write.mode(SaveMode.Overwrite).jdbc(
       load.getString("jdbc.url"),
-      load.getString("jdbc.TabName1"),
+      load.getString("jdbc.TabName3"),
       prop
 
     )
     //关闭
     spark.stop()
   }
+
 }
