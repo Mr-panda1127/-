@@ -20,7 +20,7 @@ object EquipmentRpt {
     //读取数据
     val df: DataFrame = spark.read.parquet("D:\\TestLog")
     //数据处理
-    //注册临时视图
+    //注册临时视
     df.createTempView("log")
 
     val df3 = spark.sql(
